@@ -2,7 +2,7 @@ import { Button } from "ui";
 const Page = () => {
   return (
     <div>
-      <h1>Store</h1>
+      <h1>Web</h1>
       <Button>Click Me!</Button>
     </div>
   );
