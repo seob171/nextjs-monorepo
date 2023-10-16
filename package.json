@@ -7,8 +7,16 @@
     "packages/config/*",
     "packages/shared/*"
   ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "turbo run format"
+  },
   "engines": {
     "node": ">=14.0.0"
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.17",
+  "devDependencies": {
+    "turborepo": "^0.0.1"
+  }
 }
