@@ -7,7 +7,7 @@ interface LogoProps extends HTMLAttributes<HTMLElement> {}
 
 const Logo = ({}: LogoProps) => {
   return (
-    <Link href={"/ko-KR"}>
+    <Link href={"/"}>
       <div className={"font-poppins text-4xl font-medium"}>BADA</div>
     </Link>
   );
