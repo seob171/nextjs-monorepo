@@ -10,11 +10,11 @@ export async function POST(request: Request) {
   try {
     const json = await request.json();
 
-    console.log(json);
-
     const user = await prisma.user.create({
       data: json,
     });
+
+    return NextResponse.json(user);
   } catch (error: any) {
     if (error.code === "P2002") {
       return new NextResponse("User with email already exists", {

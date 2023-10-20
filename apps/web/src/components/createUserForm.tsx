@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEventHandler, useState } from "react";
+import axios from "axios";
 
 const CreateUserForm = () => {
   const [name, setName] = useState("");
@@ -9,12 +10,7 @@ const CreateUserForm = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
-    await fetch(`http://localhost:3000/api/users`, {
-      method: "POST",
-      body: JSON.stringify({ name, email, role: "user" }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+    await axios.post("/api/users", { name, email, role: "user" });
   };
 
   return (
