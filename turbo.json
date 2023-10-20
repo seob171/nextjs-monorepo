@@ -2,16 +2,20 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "outputs": [".next/**","!.next/cache/**"]
+      "outputs": [".next/**","!.next/cache/**"],
+      "dotEnv": [".env"]
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "dotEnv": [".env"]
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "dotEnv": [".env"]
     },
     "format": {
-      "outputs": []
+      "outputs": [],
+      "dotEnv": [".env"]
     }
   }
 }
