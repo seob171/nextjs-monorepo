@@ -1,21 +1,19 @@
 {
   "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": [".env"],
+  "globalDotEnv": [".env"],
   "pipeline": {
     "build": {
-      "outputs": [".next/**","!.next/cache/**"],
-      "dotEnv": [".env"]
+      "outputs": [".next/**","!.next/cache/**"]
     },
     "dev": {
-      "cache": false,
-      "dotEnv": [".env"]
+      "cache": false
     },
     "lint": {
-      "outputs": [],
-      "dotEnv": [".env"]
+      "outputs": []
     },
     "format": {
-      "outputs": [],
-      "dotEnv": [".env"]
+      "outputs": []
     }
   }
 }
