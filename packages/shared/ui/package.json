@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint",
-    "format": "eslint --fix --ext .js,.jsx,.ts,.tsx ."
+    "format": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
     "eslint": "^8.51.0",

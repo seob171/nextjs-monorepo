@@ -2,20 +2,16 @@
   "name": "nextjs-monorepo",
   "private": true,
   "version": "1.0.0",
-  "workspaces": [
-    "apps/*",
-    "packages/config/*",
-    "packages/shared/*"
-  ],
   "scripts": {
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "turbo run format"
+    "format": "turbo run format",
+    "preinstall": "npx only-allow pnpm"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "packageManager": "yarn@1.22.17",
+  "packageManager": "pnpm@8.9.2",
   "devDependencies": {
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
