@@ -1,7 +1,8 @@
 {
   "Index": {
     "GNB": {
-      "signIn": "sign in"
+      "signIn": "Sign in",
+      "getStarted": "Get started"
     },
     "title": "Hello"
   }

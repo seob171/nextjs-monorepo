@@ -1,11 +1,11 @@
 import "../globals.css";
 import { notFound } from "next/navigation";
 import { PropsWithChildren } from "react";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Poppins, Megrim } from "next/font/google";
 import { Metadata } from "next";
-import { cn } from "@/utils/cn";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { LOCALES } from "@/constants/LOCALES";
+import { cx } from "class-variance-authority";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -19,6 +19,11 @@ const poppins = Poppins({
   variable: "--poppins-font",
   subsets: ["latin"],
   weight: ["500"],
+});
+const megrim = Megrim({
+  variable: "--megrim-font",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -36,8 +41,10 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
   unstable_setRequestLocale(locale);
 
   return (
-    <html lang={locale}>
-      <body className={cn(inter.className, poppins.variable)}>{children}</body>
+    <html lang={locale} className={"border-8"}>
+      <body className={cx(inter.className, poppins.variable, megrim.variable)}>
+        {children}
+      </body>
     </html>
   );
 }

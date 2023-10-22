@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base{
+    html{
+        @apply font-sans
+    },
+
+    div,
+    section,
+    header,
+    main,
+    nav,
+    footer
+    {
+        @apply box-border
+    }
+}

@@ -1,7 +1,8 @@
 {
   "Index": {
     "GNB": {
-      "signIn": "로그인"
+      "signIn": "로그인",
+      "getStarted": "시작하기"
     },
     "title": "안녕"
   }
