@@ -1,5 +1,3 @@
-"use client";
-
 import { ButtonHTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
@@ -22,7 +20,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 const ButtonVariant = cva(
   [
-    `button rounded-lg px-4 py-2`,
+    `button w-full rounded-lg px-4 py-2 border`,
     `disabled:cursor-not-allowed disabled:text-gray-300`,
   ],
   {
@@ -33,10 +31,10 @@ const ButtonVariant = cva(
         tertiary: ``,
       },
       layout: {
-        filled: [`text-white`, `disabled:bg-gray-100`],
-        tonal: `disabled:bg-gray-50`,
-        ghost: [`border`, `disabled:border-gray-100`],
-        subtle: ``,
+        filled: [`text-white border-transparent`, `disabled:bg-gray-100`],
+        tonal: [`border-transparent`, `disabled:bg-gray-50`],
+        ghost: [`disabled:border-gray-100`],
+        subtle: `border-transparent`,
       },
     },
     compoundVariants: [
