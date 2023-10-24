@@ -6,10 +6,15 @@ interface LogoProps
   extends Omit<LinkProps, "href">,
     Partial<Pick<LinkProps, "href">> {}
 
+export const LOGO_TEXT = "999°";
+export const LogoComponent = () => (
+  <div className={"font-bold text-4xl text-zinc-900"}>{LOGO_TEXT}</div>
+);
+
 const Logo = ({ href, ...restProps }: LogoProps) => {
   return (
     <Link href={href ?? "/"} {...restProps}>
-      <div className={"font-megrim text-4xl text-blue-400"}>BADA</div>
+      <LogoComponent />
     </Link>
   );
 };

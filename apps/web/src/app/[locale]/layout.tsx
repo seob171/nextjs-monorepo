@@ -1,30 +1,15 @@
 import "../globals.css";
 import { notFound } from "next/navigation";
 import { PropsWithChildren } from "react";
-import { Inter, Poppins, Megrim } from "next/font/google";
 import { Metadata } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { LOCALES } from "@/constants/LOCALES";
 import { cx } from "class-variance-authority";
+import { lineFont, poppins } from "@/app/fonts";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
-
-const inter = Inter({
-  variable: "--inter-font",
-  subsets: ["latin"],
-});
-const poppins = Poppins({
-  variable: "--poppins-font",
-  subsets: ["latin"],
-  weight: ["500"],
-});
-const megrim = Megrim({
-  variable: "--megrim-font",
-  subsets: ["latin"],
-  weight: ["400"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -42,7 +27,7 @@ export default function LocaleLayout({ children, params: { locale } }: Props) {
 
   return (
     <html lang={locale} className={"border-8"}>
-      <body className={cx(inter.className, poppins.variable, megrim.variable)}>
+      <body className={cx(lineFont.className, poppins.variable)}>
         {children}
       </body>
     </html>

@@ -1,9 +1,11 @@
 import { DialogHTMLAttributes, ReactNode } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import BackLink from "@/components/common/BackLink";
+import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 
 const DialogVariant = cva(
-  `fixed w-full z-modal inset-0 overflow-y-hidden bg-slate-700 bg-opacity-80`,
+  `fixed w-full z-modal inset-0 overflow-y-hidden bg-gray-700 bg-opacity-80`,
   {
     variants: {},
     defaultVariants: {},
@@ -28,6 +30,7 @@ interface DialogProps
     VariantProps<typeof DialogButtonVariant> {
   confirm?: ReactNode;
   cancel?: ReactNode;
+  closeIcon?: boolean;
 }
 
 const Dialog = ({
@@ -36,11 +39,12 @@ const Dialog = ({
   buttonDirection,
   confirm,
   cancel,
+  closeIcon = true,
   ...restProps
 }: DialogProps) => {
   return (
     <dialog
-      className={DialogVariant({ className })}
+      className={twMerge(DialogVariant({ className }))}
       aria-modal={true}
       {...restProps}
     >
@@ -53,9 +57,19 @@ const Dialog = ({
         />
         <div
           className={
-            "inline-block bg-white rounded-lg p-4 overflow-hidden shadow-xl transform transition-all"
+            "relative inline-block bg-white rounded-lg p-4 overflow-hidden shadow-xl transform transition-all"
           }
         >
+          <BackLink
+            className={"absolute top-4 right-4 p-1 -m-1 cursor-pointer"}
+          >
+            <Image
+              src={"/icons/ic_close.svg"}
+              alt={"close-icon"}
+              width={24}
+              height={24}
+            />
+          </BackLink>
           {children}
           <div className={DialogButtonVariant({ buttonDirection })}>
             {cancel && <div className={"w-full empty:hidden"}>{cancel}</div>}

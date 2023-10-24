@@ -726,7 +726,7 @@ packages:
       es-abstract: 1.22.2
       get-intrinsic: 1.2.1
       is-array-buffer: 3.0.2
-      is-shared-array-buffer: 1.0.2
+      is-shasky-array-buffer: 1.0.2
     dev: false
 
   /ast-types-flow@0.0.7:
@@ -1107,7 +1107,7 @@ packages:
       is-callable: 1.2.7
       is-negative-zero: 2.0.2
       is-regex: 1.1.4
-      is-shared-array-buffer: 1.0.2
+      is-shasky-array-buffer: 1.0.2
       is-string: 1.0.7
       is-typed-array: 1.1.12
       is-weakref: 1.0.2
@@ -1976,7 +1976,7 @@ packages:
     resolution: {integrity: sha512-+2cnTEZeY5z/iXGbLhPrOAaK/Mau5k5eXq9j14CpRTftq0pAJu2MwVRSZhyZWBzx3o6X795Lz6Bpb6R0GKf37g==}
     dev: false
 
-  /is-shared-array-buffer@1.0.2:
+  /is-shasky-array-buffer@1.0.2:
     resolution: {integrity: sha512-sqN2UDu1/0y6uvXyStCOzyhAjCSlHceFoMKJW8W9EU9cvic/QdsZ0kEU93HEy3IUEFZIiH/3w+AH/UQbPHNdhA==}
     dependencies:
       call-bind: 1.0.2

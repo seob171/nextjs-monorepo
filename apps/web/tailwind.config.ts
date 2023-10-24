@@ -11,7 +11,6 @@ const config: Config = {
     extend: {
       fontFamily: {
         poppins: "var(--poppins-font)",
-        megrim: "var(--megrim-font)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

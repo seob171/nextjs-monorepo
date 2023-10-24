@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 // 버튼 스타일 ($layout)
 // - Filled
@@ -8,9 +9,9 @@ import { cva, VariantProps } from "class-variance-authority";
 // - Subtle
 
 // 버튼 타입 ($type)
-// - default (Tertiary) [Slate]
-// - primary [Blue]
-// - secondary [Emerald]
+// - default (Tertiary) [zinc]
+// - primary [green]
+// - secondary [orange]
 
 // 버튼 상태
 // - default
@@ -41,48 +42,44 @@ const ButtonVariant = cva(
       {
         intent: "primary",
         layout: "filled",
-        class: [`bg-blue-400`, `hover:bg-blue-500`, `active:bg-blue-600`],
+        class: [`bg-green-500`, `hover:bg-green-400`, `active:bg-green-600`],
       },
       {
         intent: "secondary",
         layout: "filled",
-        class: [
-          `bg-emerald-400`,
-          `hover:bg-emerald-500`,
-          `active:bg-emerald-600`,
-        ],
+        class: [`bg-sky-500`, `hover:bg-sky-400`, `active:bg-sky-600`],
       },
       {
         intent: "tertiary",
         layout: "filled",
-        class: [`bg-slate-400`, `hover:bg-slate-500`, `active:bg-slate-600`],
+        class: [`bg-zinc-900`, `hover:bg-zinc-800`, `active:bg-zinc-950`],
       },
       //
       {
         intent: "primary",
         layout: "tonal",
         class: [
-          `text-blue-400 bg-blue-50`,
-          `hover:bg-blue-100 hover:text-blue-500`,
-          `active:bg-blue-200 active:text-blue-600`,
+          `text-green-500 bg-green-50`,
+          `hover:bg-green-100 hover:text-green-400`,
+          `active:bg-green-200 active:text-green-600`,
         ],
       },
       {
         intent: "secondary",
         layout: "tonal",
         class: [
-          `text-emerald-400 bg-emerald-50`,
-          `hover:bg-emerald-100 hover:text-emerald-500`,
-          `active:bg-emerald-200 active:text-emerald-600`,
+          `text-sky-500 bg-sky-50`,
+          `hover:bg-sky-100 hover:text-sky-400`,
+          `active:bg-sky-200 active:text-sky-600`,
         ],
       },
       {
         intent: "tertiary",
         layout: "tonal",
         class: [
-          `text-slate-400 bg-slate-50`,
-          `hover:bg-slate-100 hover:text-slate-500`,
-          `active:bg-slate-200 active:text-slate-600`,
+          `text-zinc-900 bg-zinc-50`,
+          `hover:bg-zinc-100 hover:text-zinc-800`,
+          `active:bg-zinc-200 active:text-zinc-950`,
         ],
       },
       //
@@ -90,52 +87,48 @@ const ButtonVariant = cva(
         intent: "primary",
         layout: "ghost",
         class: [
-          `text-blue-400 border-blue-400`,
-          `hover:text-blue-500 hover:border-blue-500`,
-          `active:text-blue-600 active:border-blue-600`,
+          `text-green-500 border-green-500`,
+          `hover:text-green-400 hover:border-green-400`,
+          `active:text-green-600 active:border-green-600`,
         ],
       },
       {
         intent: "secondary",
         layout: "ghost",
         class: [
-          `text-emerald-400 border-emerald-400`,
-          `hover:text-emerald-500 hover:border-emerald-500`,
-          `active:text-emerald-600 active:border-emerald-600`,
+          `text-sky-500 border-sky-500`,
+          `hover:text-sky-400 hover:border-sky-400`,
+          `active:text-sky-600 active:border-sky-600`,
         ],
       },
       {
         intent: "tertiary",
         layout: "ghost",
         class: [
-          `text-slate-400 border-slate-400`,
-          `hover:text-slate-500 hover:border-slate-500`,
-          `active:text-slate-600 active:border-slate-600`,
+          `text-zinc-900 border-zinc-900`,
+          `hover:text-zinc-800 hover:border-zinc-800`,
+          `active:text-zinc-950 active:border-zinc-950`,
         ],
       },
       //
       {
         intent: "primary",
         layout: "subtle",
-        class: [`text-blue-400`, `hover:text-blue-500`, `active:text-blue-600`],
+        class: [
+          `text-green-500`,
+          `hover:text-green-400`,
+          `active:text-green-600`,
+        ],
       },
       {
         intent: "secondary",
         layout: "subtle",
-        class: [
-          `text-emerald-400`,
-          `hover:text-emerald-500`,
-          `active:text-emerald-600`,
-        ],
+        class: [`text-sky-500`, `hover:text-sky-400`, `active:text-sky-600`],
       },
       {
         intent: "tertiary",
         layout: "subtle",
-        class: [
-          `text-slate-400`,
-          `hover:text-slate-500`,
-          `active:text-slate-600`,
-        ],
+        class: [`text-zinc-900`, `hover:text-zinc-800`, `active:text-zinc-950`],
       },
     ],
     defaultVariants: {
@@ -157,7 +150,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={ButtonVariant({ intent, layout, className })}
+      className={twMerge(ButtonVariant({ intent, layout, className }))}
       {...restProps}
     >
       {children}
