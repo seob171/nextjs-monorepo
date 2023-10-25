@@ -1,21 +1,11 @@
-import { useTranslations } from "next-intl";
-import { unstable_setRequestLocale } from "next-intl/server";
-import { LOCALES } from "@/constants/LOCALES";
 import Button from "@/components/atoms/Button";
 
-type Props = {
-  params: { locale: (typeof LOCALES)[number] };
-};
-const Page = ({ params: { locale } }: Props) => {
-  unstable_setRequestLocale(locale);
-
-  const t = useTranslations("Index");
-
+const Page = () => {
   return (
     <div className={"flex justify-center"}>
       <div className={"flex flex-col max-w-screen-xl w-full"}>
         <div>
-          <span>{t("title")}</span>
+          <span>Hello</span>
         </div>
         <div className={"grid grid-cols-4 grid-rows-3 gap-4 p-10"}>
           <Button intent={"tertiary"} layout={"filled"}>
