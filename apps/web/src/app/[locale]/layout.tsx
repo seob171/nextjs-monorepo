@@ -1,6 +1,6 @@
 import "../globals.css";
 import { notFound } from "next/navigation";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import { Metadata } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { LOCALES } from "@/constants/LOCALES";
@@ -18,17 +18,19 @@ export const metadata: Metadata = {
 
 interface Props extends PropsWithChildren {
   params: { locale: (typeof LOCALES)[number] };
+  authModal: ReactNode;
 }
-export default function LocaleLayout({ children, params: { locale } }: Props) {
-  const isValidLocale = LOCALES.some((cur) => cur === locale);
+export default function LocaleLayout({ authModal, children, params }: Props) {
+  const isValidLocale = LOCALES.some((cur) => cur === params.locale);
   if (!isValidLocale) notFound();
 
-  unstable_setRequestLocale(locale);
+  unstable_setRequestLocale(params.locale);
 
   return (
-    <html lang={locale} className={"border-8"}>
+    <html lang={params.locale} className={"border-8"}>
       <body className={cx(lineFont.className, poppins.variable)}>
         {children}
+        {authModal}
       </body>
     </html>
   );

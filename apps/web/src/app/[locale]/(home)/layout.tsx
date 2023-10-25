@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import Logo from "@/app/[locale]/_common/Logo";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { LOCALES } from "@/constants/LOCALES";
@@ -17,6 +17,7 @@ const Layout = ({ children, params }: Props) => {
   return (
     <div>
       <Header params={params} />
+
       {children}
       <footer></footer>
     </div>
