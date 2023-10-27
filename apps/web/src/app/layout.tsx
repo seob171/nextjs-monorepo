@@ -3,6 +3,7 @@ import { PropsWithChildren, ReactNode } from "react";
 import { Metadata } from "next";
 import { cx } from "class-variance-authority";
 import { lineFont, poppins } from "@/app/fonts";
+import AuthContext from "@/context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +17,10 @@ export default function RootLayout({ authModal, children }: Props) {
   return (
     <html lang={"en"} className={"border-8"}>
       <body className={cx(lineFont.className, poppins.variable)}>
-        {children}
-        {authModal}
+        <AuthContext>
+          {children}
+          {authModal}
+        </AuthContext>
       </body>
     </html>
   );

@@ -1,11 +1,15 @@
+"use client";
+
 import React, { PropsWithChildren } from "react";
 import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Layout = ({ children }: PropsWithChildren) => {
-  // 로그인 가드처리
-  const user = null; // getUser
+  const { data: session } = useSession(); //세션 정보를 가져옴
 
-  if (!user) redirect("/");
+  console.log("session", session);
+
+  if (!session) redirect("/");
 
   return <div>{children}</div>;
 };
