@@ -1,4 +1,4 @@
-import LoginModal from "@/app/@authModal/_components/modal/LoginModal";
+import SignInModal from "@/app/@authModal/_components/modal/SignInModal";
 
 type Props = {
   searchParams: Record<string, string> | null | undefined;
@@ -7,7 +7,7 @@ type Props = {
 const Page = ({ searchParams }: Props) => {
   return (
     <div>
-      <LoginModal searchParams={searchParams} closeLink={`/`} />
+      <SignInModal searchParams={searchParams} closeLink={`/`} />
     </div>
   );
 };

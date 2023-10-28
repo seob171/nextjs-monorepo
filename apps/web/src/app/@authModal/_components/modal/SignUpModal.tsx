@@ -22,28 +22,23 @@ const SignUpModal = ({ searchParams, closeLink }: Props) => {
           <LogoComponent />
         </div>
         <div className={"flex flex-col gap-y-4 w-[300px] mt-12"}>
-          <Button
-            className={"rounded-3xl border-gray-900 text-gray-900"}
-            layout={"ghost"}
-          >
-            Sign up With Google
+          <Button className={"rounded-3xl "} layout={"ghost"} disabled>
+            Sign up with Google
           </Button>
-          <Button
-            className={"rounded-3xl border-gray-900 text-gray-900"}
-            layout={"ghost"}
-          >
-            Sign up With Apple
+          <Button className={"rounded-3xl "} layout={"ghost"} disabled>
+            Sign up with Apple
           </Button>
-          <Button
-            className={"rounded-3xl border-gray-900 text-gray-900"}
-            layout={"ghost"}
-          >
-            Sign up With email
+          <Button className={"rounded-3xl "} layout={"ghost"} disabled>
+            Sign up with email
           </Button>
         </div>
         <div className={"flex mt-5"}>
           <span>Already have an account?&nbsp;</span>
-          <Link href={`/login?modal=true`} replace className={"text-green-600"}>
+          <Link
+            href={`/signIn?modal=true`}
+            replace
+            className={"text-green-600"}
+          >
             Sign in
           </Link>
         </div>

@@ -42,44 +42,44 @@ const ButtonVariant = cva(
       {
         intent: "primary",
         layout: "filled",
-        class: [`bg-green-500`, `hover:bg-green-400`, `active:bg-green-600`],
+        class: [`bg-green-500`, `hover:bg-green-600`, `active:bg-green-700`],
       },
       {
         intent: "secondary",
         layout: "filled",
-        class: [`bg-sky-500`, `hover:bg-sky-400`, `active:bg-sky-600`],
+        class: [`bg-sky-500`, `hover:bg-sky-600`, `active:bg-sky-700`],
       },
       {
         intent: "tertiary",
         layout: "filled",
-        class: [`bg-zinc-900`, `hover:bg-zinc-800`, `active:bg-zinc-950`],
+        class: [`bg-zinc-800`, `hover:bg-zinc-900`, `active:bg-zinc-950`],
       },
       //
       {
         intent: "primary",
         layout: "tonal",
         class: [
-          `text-green-500 bg-green-50`,
-          `hover:bg-green-100 hover:text-green-400`,
-          `active:bg-green-200 active:text-green-600`,
+          `text-green-500 bg-green-100`,
+          `hover:bg-green-200 hover:text-green-600`,
+          `active:bg-green-300 active:text-green-700`,
         ],
       },
       {
         intent: "secondary",
         layout: "tonal",
         class: [
-          `text-sky-500 bg-sky-50`,
-          `hover:bg-sky-100 hover:text-sky-400`,
-          `active:bg-sky-200 active:text-sky-600`,
+          `text-sky-500 bg-sky-100`,
+          `hover:bg-sky-200 hover:text-sky-600`,
+          `active:bg-sky-300 active:text-sky-700`,
         ],
       },
       {
         intent: "tertiary",
         layout: "tonal",
         class: [
-          `text-zinc-900 bg-zinc-50`,
-          `hover:bg-zinc-100 hover:text-zinc-800`,
-          `active:bg-zinc-200 active:text-zinc-950`,
+          `text-zinc-800 bg-zinc-100`,
+          `hover:bg-zinc-200 hover:text-zinc-900`,
+          `active:bg-zinc-300 active:text-zinc-950`,
         ],
       },
       //
@@ -88,8 +88,8 @@ const ButtonVariant = cva(
         layout: "ghost",
         class: [
           `text-green-500 border-green-500`,
-          `hover:text-green-400 hover:border-green-400`,
-          `active:text-green-600 active:border-green-600`,
+          `hover:text-green-600 hover:border-green-600`,
+          `active:text-green-700 active:border-green-700`,
         ],
       },
       {
@@ -97,16 +97,16 @@ const ButtonVariant = cva(
         layout: "ghost",
         class: [
           `text-sky-500 border-sky-500`,
-          `hover:text-sky-400 hover:border-sky-400`,
-          `active:text-sky-600 active:border-sky-600`,
+          `hover:text-sky-600 hover:border-sky-600`,
+          `active:text-sky-700 active:border-sky-700`,
         ],
       },
       {
         intent: "tertiary",
         layout: "ghost",
         class: [
-          `text-zinc-900 border-zinc-900`,
-          `hover:text-zinc-800 hover:border-zinc-800`,
+          `text-zinc-800 border-zinc-800`,
+          `hover:text-zinc-900 hover:border-zinc-900`,
           `active:text-zinc-950 active:border-zinc-950`,
         ],
       },
@@ -116,19 +116,19 @@ const ButtonVariant = cva(
         layout: "subtle",
         class: [
           `text-green-500`,
-          `hover:text-green-400`,
-          `active:text-green-600`,
+          `hover:text-green-600`,
+          `active:text-green-700`,
         ],
       },
       {
         intent: "secondary",
         layout: "subtle",
-        class: [`text-sky-500`, `hover:text-sky-400`, `active:text-sky-600`],
+        class: [`text-sky-500`, `hover:text-sky-600`, `active:text-sky-700`],
       },
       {
         intent: "tertiary",
         layout: "subtle",
-        class: [`text-zinc-900`, `hover:text-zinc-800`, `active:text-zinc-950`],
+        class: [`text-zinc-800`, `hover:text-zinc-900`, `active:text-zinc-950`],
       },
     ],
     defaultVariants: {
