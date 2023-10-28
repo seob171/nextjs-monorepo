@@ -16,7 +16,6 @@ const SignInButton = ({
   const searchParams = useSearchParams();
 
   const callbackUrl = searchParams.get("callbackUrl") ?? "/";
-  console.log(callbackUrl);
   const handleSignIn = async () => {
     await signIn(provider, { callbackUrl, redirect: true });
   };

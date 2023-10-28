@@ -8,6 +8,7 @@ import SignOutButton from "@/app/_common/auth/SignOutButton";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
+  console.log("😚", session);
 
   const navList = () => {
     if (session) {
@@ -27,7 +28,7 @@ const Header = async () => {
               />
             </button>
           )}
-          <SignOutButton layout={"subtle"}>
+          <SignOutButton>
             <li>Sign Out</li>
           </SignOutButton>
         </>

@@ -138,7 +138,7 @@ const ButtonVariant = cva(
   },
 );
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof ButtonVariant>;
 
 const Button = ({
