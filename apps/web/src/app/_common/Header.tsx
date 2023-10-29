@@ -5,10 +5,10 @@ import Image from "next/image";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import SignOutButton from "@/app/_common/auth/SignOutButton";
+import Dropdown from "@/components/atoms/Dropdown";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
-  console.log("😚", session);
 
   const navList = () => {
     if (session) {
@@ -18,19 +18,46 @@ const Header = async () => {
             <li>Write</li>
           </Link>
           {session.user?.image && (
-            <button className={"flex relative min-w-[32px] w-8 h-8"}>
-              <Image
-                src={session.user.image}
-                alt={"profile image"}
-                className={"rounded-full"}
-                priority
-                fill
-              />
-            </button>
+            <Dropdown
+              className={
+                "right-0 mt-2 bg-white shadow-inner shadow rounded-[8px]"
+              }
+              target={
+                <button className={"flex relative min-w-[32px] w-8 h-8"}>
+                  <Image
+                    src={session.user.image}
+                    alt={"profile image"}
+                    className={"rounded-full"}
+                    priority
+                    fill
+                  />
+                </button>
+              }
+            >
+              <ul className={"flex flex-col w-[264px] py-4"}>
+                <li>
+                  <Link href={"/profile"}>
+                    <Button layout={"subtle"} className={"text-left px-6"}>
+                      Profile
+                    </Button>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={"/stories"}>
+                    <Button layout={"subtle"} className={"text-left px-6"}>
+                      Stories
+                    </Button>
+                  </Link>
+                </li>
+                <hr className={"py-2 border-zinc-100"} />
+                <li>
+                  <SignOutButton className={"px-6 py-2 text-left"}>
+                    Sign Out
+                  </SignOutButton>
+                </li>
+              </ul>
+            </Dropdown>
           )}
-          <SignOutButton>
-            <li>Sign Out</li>
-          </SignOutButton>
         </>
       );
     }

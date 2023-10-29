@@ -19,6 +19,7 @@ const config: Config = {
       },
       zIndex: {
         modal: "10",
+        dropdown: "5",
       },
     },
   },

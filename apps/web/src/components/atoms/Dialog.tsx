@@ -3,7 +3,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import BackLink from "@/components/common/BackLink";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
-import Link, { LinkProps } from "next/link";
+import { LinkProps } from "next/link";
 
 const DialogVariant = cva(
   `fixed w-full z-modal inset-0 overflow-y-hidden bg-gray-700 bg-opacity-80`,
@@ -57,6 +57,7 @@ const Dialog = ({
         className={"flex items-center justify-center min-h-screen text-center"}
       >
         <BackLink
+          href={closeLink}
           className="fixed inset-0 transition-opacity"
           aria-hidden="true"
         />
@@ -65,25 +66,14 @@ const Dialog = ({
             "relative inline-block bg-white rounded-lg p-4 overflow-hidden shadow-xl transform transition-all"
           }
         >
-          {closeLink ? (
-            <Link href={closeLink} className={backLinkClassName}>
-              <Image
-                src={"/icons/ic_close.svg"}
-                alt={"close-icon"}
-                width={24}
-                height={24}
-              />
-            </Link>
-          ) : (
-            <BackLink className={backLinkClassName}>
-              <Image
-                src={"/icons/ic_close.svg"}
-                alt={"close-icon"}
-                width={24}
-                height={24}
-              />
-            </BackLink>
-          )}
+          <BackLink className={backLinkClassName} href={closeLink}>
+            <Image
+              src={"/icons/ic_close.svg"}
+              alt={"close-icon"}
+              width={24}
+              height={24}
+            />
+          </BackLink>
           {children}
           <div className={DialogButtonVariant({ buttonDirection })}>
             {cancel && <div className={"w-full empty:hidden"}>{cancel}</div>}
