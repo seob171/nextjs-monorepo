@@ -6,21 +6,35 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import SignOutButton from "@/app/_common/auth/SignOutButton";
 import Dropdown from "@/components/atoms/Dropdown";
+import NotificationButton from "@/app/_common/GNB/NotificationButton";
 
-const Header = async () => {
+const GNB = async () => {
   const session = await getServerSession(authOptions);
 
   const navList = () => {
     if (session) {
       return (
         <>
-          <Link href={`/write`}>
-            <li>Write</li>
+          <Link href={`/write`} className={"flex items-center gap-x-2 group"}>
+            <Image
+              src={"/icons/ic_plan-storyboard.svg"}
+              alt={"storyboard-icon"}
+              width={24}
+              height={24}
+              className={
+                "icon-filter-tertiary800 group-hover:icon-filter-tertiary900"
+              }
+            />
+            <li className={"text-tertiary-800 group-hover:text-tertiary-900"}>
+              Write
+            </li>
           </Link>
+          <NotificationButton />
+
           {session.user?.image && (
             <Dropdown
               className={
-                "right-0 mt-2 bg-white shadow-inner shadow rounded-[8px]"
+                "right-0 mt-2 bg-white rounded-[8px] shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
               }
               target={
                 <button className={"flex relative min-w-[32px] w-8 h-8"}>
@@ -52,7 +66,7 @@ const Header = async () => {
                 <hr className={"py-2 border-zinc-100"} />
                 <li>
                   <SignOutButton className={"px-6 py-2 text-left"}>
-                    Sign Out
+                    Sign out
                   </SignOutButton>
                 </li>
               </ul>
@@ -90,4 +104,4 @@ const Header = async () => {
   );
 };
 
-export default Header;
+export default GNB;

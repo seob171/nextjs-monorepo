@@ -1,11 +1,11 @@
 import { PropsWithChildren } from "react";
 
-import Header from "@/app/_common/Header";
+import GNB from "@/app/_common/GNB/GNB";
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
     <div>
-      <Header />
+      <GNB />
       {children}
       <footer></footer>
     </div>

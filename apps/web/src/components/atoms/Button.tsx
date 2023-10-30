@@ -9,8 +9,8 @@ import { twMerge } from "tailwind-merge";
 // - Subtle
 
 // 버튼 타입 ($type)
-// - default (Tertiary) [zinc]
-// - primary [green]
+// - default (Tertiary) [tertiary]
+// - primary [primary]
 // - secondary [orange]
 
 // 버튼 상태
@@ -42,44 +42,56 @@ const ButtonVariant = cva(
       {
         intent: "primary",
         layout: "filled",
-        class: [`bg-green-500`, `hover:bg-green-600`, `active:bg-green-700`],
+        class: [
+          `bg-primary-500`,
+          `hover:bg-primary-600`,
+          `active:bg-primary-700`,
+        ],
       },
       {
         intent: "secondary",
         layout: "filled",
-        class: [`bg-sky-500`, `hover:bg-sky-600`, `active:bg-sky-700`],
+        class: [
+          `bg-secondary-500`,
+          `hover:bg-secondary-600`,
+          `active:bg-secondary-700`,
+        ],
       },
       {
         intent: "tertiary",
         layout: "filled",
-        class: [`bg-zinc-800`, `hover:bg-zinc-900`, `active:bg-zinc-950`],
+        class: [
+          `bg-tertiary-800`,
+          `hover:bg-tertiary-900`,
+          `active:bg-tertiary-950`,
+        ],
       },
       //
       {
         intent: "primary",
         layout: "tonal",
         class: [
-          `text-green-500 bg-green-100`,
-          `hover:bg-green-200 hover:text-green-600`,
-          `active:bg-green-300 active:text-green-700`,
+          `text-primary-500 bg-primary-100`,
+          `hover:bg-primary-200 hover:text-primary-600`,
+          `active:bg-primary-300 active:text-primary-700`,
         ],
       },
       {
         intent: "secondary",
         layout: "tonal",
         class: [
-          `text-sky-500 bg-sky-100`,
-          `hover:bg-sky-200 hover:text-sky-600`,
-          `active:bg-sky-300 active:text-sky-700`,
+          `text-secondary-500 bg-secondary-100`,
+          `hover:bg-secondary-200 hover:text-secondary-600`,
+          `active:bg-secondary-300 active:text-secondary-700`,
         ],
       },
       {
         intent: "tertiary",
         layout: "tonal",
         class: [
-          `text-zinc-800 bg-zinc-100`,
-          `hover:bg-zinc-200 hover:text-zinc-900`,
-          `active:bg-zinc-300 active:text-zinc-950`,
+          `text-tertiary-800 bg-tertiary-100`,
+          `hover:bg-tertiary-200 hover:text-tertiary-900`,
+          `active:bg-tertiary-300 active:text-tertiary-950`,
         ],
       },
       //
@@ -87,27 +99,27 @@ const ButtonVariant = cva(
         intent: "primary",
         layout: "ghost",
         class: [
-          `text-green-500 border-green-500`,
-          `hover:text-green-600 hover:border-green-600`,
-          `active:text-green-700 active:border-green-700`,
+          `text-primary-500 border-primary-500`,
+          `hover:text-primary-600 hover:border-primary-600`,
+          `active:text-primary-700 active:border-primary-700`,
         ],
       },
       {
         intent: "secondary",
         layout: "ghost",
         class: [
-          `text-sky-500 border-sky-500`,
-          `hover:text-sky-600 hover:border-sky-600`,
-          `active:text-sky-700 active:border-sky-700`,
+          `text-secondary-500 border-secondary-500`,
+          `hover:text-secondary-600 hover:border-secondary-600`,
+          `active:text-secondary-700 active:border-secondary-700`,
         ],
       },
       {
         intent: "tertiary",
         layout: "ghost",
         class: [
-          `text-zinc-800 border-zinc-800`,
-          `hover:text-zinc-900 hover:border-zinc-900`,
-          `active:text-zinc-950 active:border-zinc-950`,
+          `text-tertiary-800 border-tertiary-800`,
+          `hover:text-tertiary-900 hover:border-tertiary-900`,
+          `active:text-tertiary-950 active:border-tertiary-950`,
         ],
       },
       //
@@ -115,20 +127,28 @@ const ButtonVariant = cva(
         intent: "primary",
         layout: "subtle",
         class: [
-          `text-green-500`,
-          `hover:text-green-600`,
-          `active:text-green-700`,
+          `text-primary-500`,
+          `hover:text-primary-600`,
+          `active:text-primary-700`,
         ],
       },
       {
         intent: "secondary",
         layout: "subtle",
-        class: [`text-sky-500`, `hover:text-sky-600`, `active:text-sky-700`],
+        class: [
+          `text-secondary-500`,
+          `hover:text-secondary-600`,
+          `active:text-secondary-700`,
+        ],
       },
       {
         intent: "tertiary",
         layout: "subtle",
-        class: [`text-zinc-800`, `hover:text-zinc-900`, `active:text-zinc-950`],
+        class: [
+          `text-tertiary-800`,
+          `hover:text-tertiary-900`,
+          `active:text-tertiary-950`,
+        ],
       },
     ],
     defaultVariants: {

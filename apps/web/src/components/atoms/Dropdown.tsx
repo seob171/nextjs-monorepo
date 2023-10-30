@@ -1,8 +1,9 @@
 "use client";
 
-import { HTMLAttributes, ReactNode, useState } from "react";
+import { HTMLAttributes, ReactNode, useRef, useState } from "react";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
+// import { useOnClickOutside } from "usehooks-ts";
 
 const DropdownVariant = cva(`absolute flex flex-col`, {
   variants: {},
@@ -19,13 +20,18 @@ const Dropdown = ({
   className,
   ...restProps
 }: DropdownProps) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [openState, setOpenState] = useState(false);
 
   const toggleTarget = () => setOpenState((prev) => !prev);
 
+  // useOnClickOutside(ref, () => setOpenState(false));
+
   return (
     <div className={"relative z-dropdown"} {...restProps}>
-      <div onClick={toggleTarget}>{target}</div>
+      <div ref={ref} onClick={toggleTarget}>
+        {target}
+      </div>
       {openState && (
         <div className={twMerge(DropdownVariant({ className }))}>
           {children}
