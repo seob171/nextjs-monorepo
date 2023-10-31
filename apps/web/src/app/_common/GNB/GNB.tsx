@@ -7,6 +7,15 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import SignOutButton from "@/app/_common/auth/SignOutButton";
 import Dropdown from "@/components/atoms/Dropdown";
 import NotificationButton from "@/app/_common/GNB/NotificationButton";
+import React, { ComponentProps, Fragment } from "react";
+
+const PROFILE_IMAGE_DROPDOWN_OPTIONS: ComponentProps<
+  typeof Dropdown
+>["options"] = [
+  { caption: "Profile", value: "profile" },
+  { caption: "Stories", value: "stories" },
+  { caption: "Sign out", value: "sign_out" },
+];
 
 const GNB = async () => {
   const session = await getServerSession(authOptions);
@@ -34,7 +43,7 @@ const GNB = async () => {
           {session.user?.image && (
             <Dropdown
               className={
-                "right-0 mt-2 bg-white rounded-[8px] shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+                "flex flex-col w-[264px] py-4 right-0 mt-2 bg-white rounded-[8px] shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
               }
               target={
                 <button className={"flex relative min-w-[32px] w-8 h-8"}>
@@ -47,29 +56,35 @@ const GNB = async () => {
                   />
                 </button>
               }
+              options={PROFILE_IMAGE_DROPDOWN_OPTIONS}
             >
-              <ul className={"flex flex-col w-[264px] py-4"}>
-                <li>
-                  <Link href={"/profile"}>
-                    <Button layout={"subtle"} className={"text-left px-6"}>
-                      Profile
-                    </Button>
-                  </Link>
-                </li>
-                <li>
-                  <Link href={"/stories"}>
-                    <Button layout={"subtle"} className={"text-left px-6"}>
-                      Stories
-                    </Button>
-                  </Link>
-                </li>
-                <hr className={"py-2 border-zinc-100"} />
-                <li>
-                  <SignOutButton className={"px-6 py-2 text-left"}>
-                    Sign out
-                  </SignOutButton>
-                </li>
-              </ul>
+              <>
+                {PROFILE_IMAGE_DROPDOWN_OPTIONS.map(
+                  ({ caption, value }, index) => {
+                    if (value === "sign_out") {
+                      return (
+                        <SignOutButton
+                          key={`profile-image-dropdown-option-${value}`}
+                          className={"px-6 py-2 text-left"}
+                        >
+                          Sign out
+                        </SignOutButton>
+                      );
+                    }
+
+                    return (
+                      <Link
+                        href={`/${value}`}
+                        key={`profile-image-dropdown-option-${value}`}
+                      >
+                        <Button layout={"subtle"} className={"text-left px-6"}>
+                          {caption}
+                        </Button>
+                      </Link>
+                    );
+                  },
+                )}
+              </>
             </Dropdown>
           )}
         </>
