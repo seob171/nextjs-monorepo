@@ -1,7 +1,6 @@
 "use client";
 
 import React, {
-  Children,
   MouseEventHandler,
   ReactElement,
   ReactNode,
@@ -59,16 +58,7 @@ const Dropdown = ({
       </select>
       <div onClick={toggleTarget}>{target}</div>
       {openState && (
-        <ul className={twMerge(DropdownVariant({ className }))}>
-          {Children.map(children, (child: ReactElement, index) => {
-            // 자식 요소를 수정하여 반환하는 예시
-            return (
-              <li onClick={() => optionRefs.current[index].click()}>
-                {React.cloneElement(child, {})}
-              </li>
-            );
-          })}
-        </ul>
+        <ul className={twMerge(DropdownVariant({ className }))}>{children}</ul>
       )}
     </div>
   );

@@ -10,12 +10,15 @@ const NotificationButton = () => {
   const isNotificationPage = pathname.startsWith("/notification");
 
   return (
-    <Link href={`/notification`} className={"flex items-center group"}>
+    <Link
+      href={`/notification`}
+      className={"flex items-center group min-w-[20px] w-5 h-5"}
+    >
       <Image
-        src={`/icons/ic_notification${isNotificationPage ? "_filled" : ""}.svg`}
+        src={`/icons/ic_bell${isNotificationPage ? "_solid" : ""}.svg`}
         alt={"notification-icon"}
-        width={24}
-        height={24}
+        width={20}
+        height={20}
         className={
           "icon-filter-tertiary800 group-hover:icon-filter-tertiary900"
         }

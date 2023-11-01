@@ -68,10 +68,10 @@ const Dialog = ({
         >
           <BackLink className={backLinkClassName} href={closeLink}>
             <Image
-              src={"/icons/ic_close.svg"}
+              src={"/icons/ic_cross.svg"}
               alt={"close-icon"}
-              width={24}
-              height={24}
+              width={20}
+              height={20}
             />
           </BackLink>
           {children}
