@@ -8,7 +8,7 @@ const Layout = async ({ children }: PropsWithChildren) => {
 
   if (!session) redirect("/");
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
 
 export default Layout;

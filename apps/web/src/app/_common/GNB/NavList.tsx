@@ -15,12 +15,9 @@ const NavList = async () => {
       <>
         <WriteButton />
         <NotificationButton />
-
-        {session.user?.image && (
-          <ProfileDropdown
-            target={<ProfileButton src={session.user.image} />}
-          />
-        )}
+        <ProfileDropdown
+          target={<ProfileButton src={session.user.image ?? ""} />}
+        />
       </>
     );
   }
