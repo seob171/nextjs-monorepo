@@ -20,7 +20,8 @@ const ProfileButton = ({ src }: Pick<ImageProps, "src">) => {
           src={src}
           className={"rounded-full"}
           priority
-          fill
+          width={32}
+          height={32}
           alt={"profile image"}
           onError={() => setHasError(true)}
         />

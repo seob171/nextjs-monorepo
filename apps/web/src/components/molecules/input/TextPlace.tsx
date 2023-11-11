@@ -4,21 +4,35 @@ import {
   ChangeEvent,
   HTMLAttributes,
   KeyboardEvent,
+  MouseEvent,
+  useEffect,
   useRef,
   useState,
 } from "react";
-
 import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
+
+const INITIAL_INDEX = -1;
 
 type Content = {
   value: string;
 };
 
 const TextPlace = ({ className, ...restProps }: Props) => {
-  const titleRef = useRef<HTMLInputElement>(null);
-  const [contents, setContents] = useState<Content[]>([{ value: "" }]);
+  const inputWrapperRef = useRef<HTMLDivElement>(null);
+
+  const [contents, setContents] = useState<Content[]>([
+    { value: "" }, // title
+    { value: "" }, // first content
+  ]);
+  const [focusIndex, setFocusIndex] = useState(INITIAL_INDEX);
+  const [selection, setSelection] = useState(0);
+
+  const clickTextArea = (e: MouseEvent<HTMLDivElement>) => {
+    setFocusIndex(contents.length - 1);
+    setSelection(contents[contents.length - 1].value.length);
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     const { value } = e.target;
@@ -28,48 +42,51 @@ const TextPlace = ({ className, ...restProps }: Props) => {
     setContents(next);
   };
 
-  const handleTitleInputKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    switch (e.code) {
-      case "Enter": {
-        setContents((prev) => [{ value: "" }, ...prev]);
-        break;
-      }
-
-      case "ArrowDown": {
-        let next = contents.slice();
-        setContents(next);
-        break;
-      }
-
-      default:
-        break;
-    }
-  };
-
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>, index: number) => {
+    const prevInput = e.currentTarget.previousSibling as HTMLInputElement;
+    const currentInput = e.currentTarget;
+    const nextInput = e.currentTarget.nextSibling as HTMLInputElement;
+
     switch (e.code) {
       case "Enter": {
         if (!e.nativeEvent.isComposing) {
-          const text = contents[index].value ?? "";
-          const pos = e.currentTarget.selectionStart ?? 0;
-          const prevContent = { ...contents[index], value: text.slice(0, pos) };
-          const nextContent = {
-            ...contents[index],
-            value: text.slice(pos, text.length),
+          const currentContent = contents[index];
+          const currentValue = currentInput.value ?? "";
+          const pos = currentInput.selectionStart ?? 0;
+          const prevContent = {
+            ...currentContent,
+            value: currentValue.slice(0, pos),
           };
 
-          const next = contents.slice();
+          const nextContent = {
+            ...currentContent,
+            value: currentValue.slice(pos, currentValue.length),
+          };
 
-          next.splice(index, 1, ...[prevContent, nextContent]);
-          setContents(next);
+          const nextContents = contents.slice();
+          nextContents.splice(index, 1, ...[prevContent, nextContent]);
+
+          setContents(nextContents);
+
+          setFocusIndex(index + 1);
+          setSelection(0);
         }
         break;
       }
       case "Backspace": {
-        if (!contents[index].value && contents.length > 1) {
-          const next = contents.slice();
-          next.splice(index, 1);
-          setContents(next);
+        const currentValue = currentInput.value ?? "";
+        const pos = e.currentTarget.selectionStart ?? 0;
+        const deletedValue = currentValue.slice(0, pos);
+        const restValue = currentValue.slice(pos, currentValue.length);
+
+        if (!deletedValue && prevInput) {
+          let nextContents = contents.slice();
+          nextContents[index - 1].value += restValue;
+          nextContents.splice(index, 1);
+          setContents(nextContents);
+
+          setFocusIndex(index - 1);
+          setSelection(prevInput.value.length);
 
           e.preventDefault();
         }
@@ -77,18 +94,26 @@ const TextPlace = ({ className, ...restProps }: Props) => {
       }
 
       case "ArrowUp": {
-        if (index === 0) {
-          titleRef.current?.focus();
-        } else {
-          let next = contents.slice();
-          setContents(next);
-        }
+        setFocusIndex(index - 1);
         break;
       }
 
       case "ArrowDown": {
-        let next = contents.slice();
-        setContents(next);
+        if (nextInput) {
+          setFocusIndex(index + 1);
+        }
+        break;
+      }
+
+      case "ArrowLeft": {
+        const pos = currentInput.selectionStart ?? 0;
+        setSelection(pos - 1);
+        break;
+      }
+      case "ArrowRight": {
+        const pos = currentInput.selectionStart ?? 0;
+        setSelection(Math.min(pos + 1, currentInput.value.length));
+
         break;
       }
 
@@ -97,30 +122,51 @@ const TextPlace = ({ className, ...restProps }: Props) => {
     }
   };
 
+  useEffect(() => {
+    const inputWrapper = inputWrapperRef.current;
+    if (focusIndex !== INITIAL_INDEX && inputWrapper) {
+      const target = inputWrapper.children[focusIndex] as HTMLInputElement;
+      target.focus();
+      setTimeout(() => {
+        target.setSelectionRange(selection, selection);
+      }, 0);
+
+      setFocusIndex(INITIAL_INDEX);
+    }
+  }, [focusIndex, selection]);
+
   return (
-    <>
-      <input
-        className={"placeholder:text-tertiary-200 font-bold text-4xl outline-0"}
-        placeholder={"Untitled"}
-        ref={titleRef}
-        onKeyDown={handleTitleInputKeyDown}
-      />
-      <div className={className} {...restProps}>
-        {contents.map(({ value }, index) => (
-          <div key={index} className={twMerge("flex w-full py-1")}>
-            <input
-              value={value}
-              onChange={(e) => handleChange(e, index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              placeholder={"'/' for commands..."}
-              className={
-                "w-full outline-0 placeholder:opacity-0 focus:placeholder:opacity-100"
-              }
-            />
-          </div>
-        ))}
-      </div>
-    </>
+    <div
+      className={"flex flex-col h-full"}
+      ref={inputWrapperRef}
+      onClick={clickTextArea}
+      {...restProps}
+    >
+      {contents.map(({ value }, index) => {
+        const isTitle = index === 0;
+        const placeHolder = isTitle ? "Untitled" : "'/' for commands...";
+        const titleStyle = "placeholder:text-tertiary-200 font-bold text-4xl";
+        const contentStyle =
+          "placeholder:opacity-0 focus:placeholder:opacity-100";
+
+        return (
+          <input
+            key={index}
+            value={value}
+            autoFocus={isTitle}
+            onChange={(e) => handleChange(e, index)}
+            onKeyDown={(e) => handleKeyDown(e, index)}
+            placeholder={placeHolder}
+            className={twMerge(
+              "flex w-full py-1 outline-0 bg-secondary-50",
+              isTitle ? titleStyle : contentStyle,
+              focusIndex !== INITIAL_INDEX && "caret-transparent",
+            )}
+            onClick={(e) => e.stopPropagation()}
+          />
+        );
+      })}
+    </div>
   );
 };
 

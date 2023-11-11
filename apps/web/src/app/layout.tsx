@@ -16,7 +16,9 @@ interface Props extends PropsWithChildren {
 export default function RootLayout({ authModal, children }: Props) {
   return (
     <html lang={"en"} className={"border-8"}>
-      <body className={cx(lineFont.className, poppins.variable)}>
+      <body
+        className={cx(lineFont.className, poppins.variable, "flex flex-col")}
+      >
         <Providers>
           {children}
           {authModal}
