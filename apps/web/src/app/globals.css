@@ -17,3 +17,12 @@
         @apply box-border
     }
 }
+
+@layer utilities{
+    .contentEditable-placeholder{
+        &:empty:before::content{
+            content: attr(placeholder);
+            color:#a1a1aa
+        }
+    }
+}

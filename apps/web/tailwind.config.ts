@@ -22,6 +22,157 @@ const config: Config = {
         modal: "10",
         dropdown: "5",
       },
+      fontSize: {
+        headline1: [
+          "46px",
+          {
+            fontWeight: "700",
+            lineHeight: "64px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        headline2: [
+          "42px",
+          {
+            fontWeight: "700",
+            lineHeight: "60px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        headline3: [
+          "34px",
+          {
+            fontWeight: "700",
+            lineHeight: "52px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        headline4: [
+          "28px",
+          {
+            fontWeight: "700",
+            lineHeight: "40px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        headline5: [
+          "24px",
+          {
+            fontWeight: "700",
+            lineHeight: "34px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        headline6: [
+          "20px",
+          {
+            fontWeight: "700",
+            lineHeight: "30px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        headline7: [
+          "18px",
+          {
+            fontWeight: "700",
+            lineHeight: "26px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        subtitle1: [
+          "16px",
+          {
+            fontWeight: "700",
+            lineHeight: "24px",
+            letterSpacing: "-0.2px",
+          },
+        ],
+        subtitle2: [
+          "14px",
+          {
+            fontWeight: "700",
+            lineHeight: "22px",
+            letterSpacing: "-0.2px",
+          },
+        ],
+        subtitle3: [
+          "16px",
+          {
+            fontWeight: "500",
+            lineHeight: "24px",
+            letterSpacing: "-0.2px",
+          },
+        ],
+        subtitle4: [
+          "14px",
+          {
+            fontWeight: "500",
+            lineHeight: "22px",
+            letterSpacing: "-0.2px",
+          },
+        ],
+        body1: [
+          "16px",
+          {
+            fontWeight: "400",
+            lineHeight: "26px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        body2: [
+          "15px",
+          {
+            fontWeight: "400",
+            lineHeight: "25px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        body3: [
+          "14px",
+          {
+            fontWeight: "400",
+            lineHeight: "24px",
+            letterSpacing: "-0.4px",
+          },
+        ],
+        button1: [
+          "18px",
+          {
+            fontWeight: "500",
+            lineHeight: "26px",
+          },
+        ],
+        button2: [
+          "16px",
+          {
+            fontWeight: "500",
+            lineHeight: "24px",
+          },
+        ],
+        button3: [
+          "14px",
+          {
+            fontWeight: "500",
+            lineHeight: "22px",
+          },
+        ],
+        caption1: [
+          "12px",
+          {
+            fontWeight: "400",
+            lineHeight: "20px",
+            letterSpacing: "-0.2px",
+          },
+        ],
+        caption2: [
+          "10px",
+          {
+            fontWeight: "400",
+            lineHeight: "18px",
+            letterSpacing: "-0.2px",
+          },
+        ],
+      },
       colors: {
         primary: {
           50: "#f0fdf4",

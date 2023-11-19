@@ -2,7 +2,7 @@
 
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-import { useTextPlaceContext } from "@/app/(loggedIn)/new-story/_provider/TextPlaceProvider";
+import { useTextPlaceContext } from "@/app/(loggedIn)/new-story/_test/TextPlaceProvider";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {}
 
